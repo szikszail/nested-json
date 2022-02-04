@@ -6,7 +6,7 @@ rm -fr ./dist
 rm -fr ./*.egg-info
 
 echo "2) Flake"
-python -m flake8 nested-json
+python -m flake8 nested_json
 
 echo "3) Testing"
 python -m pytest
