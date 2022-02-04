@@ -1,0 +1,13 @@
+# Building
+build
+twine
+setuptools
+wheel
+
+# Testing
+pytest
+pytest-cov
+flake8
+
+# Prod requirements
+-r requirements.txt
