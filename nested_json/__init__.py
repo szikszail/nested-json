@@ -1,11 +1,13 @@
 import json
 import re
-from typing import Any
+from typing import Any, List
 
 __NESTED__ = "__nested__"
 
+class CircularReferenceError(Exception):
+    pass
 
-def Nested(obj: Any, in_place: bool = True) -> Any:
+def Nested(obj: Any, in_place: bool = False) -> Any:
     if type(obj) is dict:
         if not in_place:
             obj = obj.copy()
@@ -42,11 +44,13 @@ def process(obj: Any) -> Any:
     if type(obj) is list:
         if __NESTED__ not in obj:
             return [process(i) for i in obj]
+        obj = obj.copy()
         obj.remove(__NESTED__)
         return json.dumps(process(obj))
     if type(obj) is dict:
         if __NESTED__ not in obj:
             return {k: process(v) for k, v in obj.items()}
+        obj = obj.copy()
         obj.pop(__NESTED__)
         return json.dumps(process(obj))
     if type(obj) is tuple:

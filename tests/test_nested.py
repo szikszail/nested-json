@@ -24,7 +24,7 @@ def test_nested_other_value():
 
 def test_nested_dict_inplace():
     data = {"foo": "bar"}
-    nested = Nested(data)
+    nested = Nested(data, in_place=True)
     assert nested == data == {"__nested__": True, "foo": "bar"}
 
 
@@ -37,7 +37,7 @@ def test_nested_dict_not_inplace():
 
 def test_nested_list_inplace():
     data = ["foo", "bar"]
-    nested = Nested(data)
+    nested = Nested(data, in_place=True)
     assert nested == data == ["__nested__", "foo", "bar"]
 
 
