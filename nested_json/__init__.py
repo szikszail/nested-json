@@ -2,10 +2,14 @@ import json
 import re
 from typing import IO, Any
 
+__version__ = "1.0.1"
+
 __NESTED__ = "__nested__"
+
 
 class CircularReferenceError(Exception):
     pass
+
 
 def Nested(obj: Any, in_place: bool = False) -> Any:
     """Decorates the object passed (in place or not)
@@ -28,6 +32,7 @@ def Nested(obj: Any, in_place: bool = False) -> Any:
             obj = obj.copy()
         obj.insert(0, __NESTED__)
     return obj
+
 
 def _is_json_string(s: str) -> bool:
     p = re.compile(r'^(?:\{.*\}|\[.*\])$')
@@ -85,7 +90,7 @@ def process(obj: Any) -> Any:
 def dump(obj: Any, fp: IO[str], **kwargs) -> None:
     """Serialize obj as a JSON formatted stream to fp
     (a .write()-supporting file-like object) using this conversion table.
-    
+
     Same as json.dump, but it supports nested JSONs
     (https://docs.python.org/3/library/json.html)
 
@@ -96,10 +101,11 @@ def dump(obj: Any, fp: IO[str], **kwargs) -> None:
     """
     json.dump(process(obj), fp, **kwargs)
 
+
 def dumps(obj: Any, **kwargs) -> str:
     """Serialize obj to a JSON formatted str using this conversion table.
     The arguments have the same meaning as in dump().
-    
+
     Same as json.dumps, but it supports nested JSONs
     (https://docs.python.org/3/library/json.html)
 
@@ -112,10 +118,11 @@ def dumps(obj: Any, **kwargs) -> str:
     """
     return json.dumps(process(obj), **kwargs)
 
+
 def load(fp: IO[str], **kwargs) -> Any:
     """Deserialize fp (a .read()-supporting text file or binary file
     containing a JSON document) to a Python object using this conversion table.
-    
+
     Same as json.load, but it supports nested JSONs
     (https://docs.python.org/3/library/json.html)
 
@@ -133,7 +140,7 @@ def loads(s: str, **kwargs) -> Any:
     """Deserialize s (a str, bytes or bytearray instance containing a JSON document)
     to a Python object using this conversion table.
     The other arguments have the same meaning as in load().
-    
+
     Same as json.loads, but it supports nested JSONs
     (https://docs.python.org/3/library/json.html)
 
@@ -144,4 +151,3 @@ def loads(s: str, **kwargs) -> Any:
         Any: The deserialized object, with nested JSON if needed.
     """
     return parse(json.loads(s, **kwargs))
-

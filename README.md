@@ -7,13 +7,13 @@ A library to manage JSONs with encoded JSON more effectively (e.g. AWS Event Bri
 ## Install
 
 ```shell
-pip install nested-json
+pip install nested_json
 ```
 
 ## Usage
 
 ```python
-import nested-json as njson
+import nested_json as njson
 ```
 
 The main API of the library consist of:
