@@ -1,10 +1,8 @@
 # nested-json
 
-![PyPI](https://img.shields.io/pypi/v/nested-json?style=flat-square)
+![PyPI](https://img.shields.io/pypi/v/nested-json?style=flat-square) ![PyPI - Downloads](https://img.shields.io/pypi/dw/nested-json?style=flat-square) ![GitHub release (latest by date)](https://img.shields.io/github/v/release/szikszail/nested-json?style=flat-square)
 
-![PyPI - Downloads](https://img.shields.io/pypi/dw/nested-json?style=flat-square)
-
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/szikszail/nested-json?style=flat-square)
+A library to manage JSONs with encoded JSON more effectively (e.g. AWS Event Bridge Events, AWS API Gateway Events)
 
 ## Install
 
@@ -21,8 +19,8 @@ import nested-json as njson
 ### Marking `dict` / `list` as nested
 
 The `Nested` function can be used to mark a dictionary or
-list as a nested data, which will add a special property to it, 
-marking it nested. This property later removed during processing.
+list as nested data, which will add a particular property to it, 
+marking it nested. This property was later removed during processing.
 
 ```python
 data = {
@@ -82,7 +80,7 @@ processed_data = njson.process(data)
 ### Converting to JSON string
 
 The result of `process` can be already passed to `json.dumps` , 
-but the `njson.dumps` can be also used with nested json data.
+but the `njson.dumps` can also be used with nested JSON data.
 
 ```python
 json_string = njson.dumps(data)
@@ -92,7 +90,7 @@ json_string = njson.dumps(data)
 
 ### Parsing JSON string
 
-Nested JSON string can be parsed to nested json data with the `loads` function or the `parse` function
+Nested JSON string can be parsed to nested JSON data with the `loads` function or the `parse` function
 
 ```python
 assert njson.loads(json_string) == data
@@ -102,4 +100,4 @@ assert njson.parse(json.loads(json_string)) == data
 
 ## Compatibility
 
-Note, that both `loads` and `dumps` uses the `json.loads` and `json.dumps` functions, thus they can be used with "normal" JSON as well.
+Note that both `loads` and `dumps` use the `json.loads` and `json.dumps` functions; thus they can be used with "normal" JSON as well.
