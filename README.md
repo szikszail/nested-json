@@ -16,6 +16,14 @@ pip install nested-json
 import nested-json as njson
 ```
 
+The main API of the library consist of:
+
+* `Nested(obj)` - to convert any list or dictionary to a nested one
+* `parse(str)` - to parse a JSON string to a nested JSON
+* `process(obj)` - to process/stringify any nested JSON
+* `dumps(obj)`,  `dump(obj, fp)` - same as from the `json` module, but supports nested JSON
+* `loads(str)`,  `load(fp)` - same as from the `json` module, but supports nested JSON
+
 ### Marking `dict` / `list` as nested
 
 The `Nested` function can be used to mark a dictionary or
