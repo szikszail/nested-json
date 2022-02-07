@@ -1,12 +1,11 @@
 import setuptools
-from nested_json import __version__
 
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setuptools.setup(
     name="nested_json",
-    version=__version__,
+    version="1.0.1",
     author="Laszlo Szikszai",
     author_email="sziklaszlo@gmail.com",
     description="A library to manage JSONs with encoded JSON more effectively (e.g. AWS Event Bridge Events, AWS API Gateway Events)",
