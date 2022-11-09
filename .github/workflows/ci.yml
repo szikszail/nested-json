@@ -9,3 +9,6 @@ jobs:
   call_python_package_build:
     name: Build and test Python package
     uses: szikszail/workflows/.github/workflows/python-package-build.yml@main
+    with:
+      coverage_path: coverage.lcov
+      coverage_format: lcov
