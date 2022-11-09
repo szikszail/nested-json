@@ -11,4 +11,4 @@ jobs:
     uses: szikszail/workflows/.github/workflows/python-package-build.yml@main
     with:
       coverage_path: coverage.lcov
-      coverage_format: lcov
+      coverage_format: clover
