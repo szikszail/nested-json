@@ -10,5 +10,5 @@ jobs:
     name: Build and test Python package
     uses: szikszail/workflows/.github/workflows/python-package-build.yml@main
     with:
-      coverage_path: coverage.lcov
+      coverage_path: coverage.xml
       coverage_format: clover
